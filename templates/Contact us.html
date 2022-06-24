@@ -1,0 +1,34 @@
+{% extends 'Base.html' %}
+
+{% set title='Contact us' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block contect %}
+
+<body>
+
+    <div class="ContainerContact">
+        <h2>Contact Us</h2>
+        <p class="text">
+            <span class="moreText">Please Fill in the details, and we will contact you at the appropriate time
+            </span>
+        </p>
+        <button class="readMoreButton">Click hear to read more</button>
+        <form action="" id="contactForm" method="post">
+                <label for="fullname">Full name:</label><br>
+                <input type="text" id="fullname" name="fullname" required> <br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required> <br><br>
+                <label for="Phone">Phone Number:</label><br>
+                <input type="tel" id="Phone" name="Phone" minlength="9" maxlength="13" required><br><br>
+                <label for="timeToContact">Choose hour:</label>
+                <input type="time" id="timeToContact" name="timeToContact" min="07:00" max="16:00"><br><br>
+                <input type="submit" value="Submit" id="contactBtn">
+        </form>
+        <header>Maccabi Tel Aviv is an unending love</header>
+    </div>
+
+</body>
+
+{% endblock %}

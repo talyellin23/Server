@@ -1,0 +1,34 @@
+{% extends 'Base.html' %}
+
+
+{% set title='Maccabi Fans' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block contect %}
+
+<body>
+    <h1>Maccabi Fans</h1>
+    <span>
+        <img src="/static/img/Home_Screen.jpg" alt="computer picture" width="348">
+        <img src="/static/img/Home_Screen2.jpg" alt="computer picture" width="348">
+    </span>
+
+    <div class="containerHomeScreen">
+
+        <div class="gridItem1">
+            <header>Maccabi Tel Aviv is an unending love</header>
+        </div>
+        <div class="gridItem2">
+            <h2>Welcome to the Maccabi fan page!</h2><br>
+            <p class="text"> This is the official website of Maccabi Tel Aviv fans.
+                <span class="moreText">On this site you will see game summaries,
+                    updates on the team and official signings of players.
+                </span>
+            </p>
+            <button class="readMoreButton">Click hear to read more</button>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

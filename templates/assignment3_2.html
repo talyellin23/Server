@@ -1,0 +1,38 @@
+{% extends 'Base.html' %}
+
+{% set title='Forms' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block contect %}
+    <div class="form-style">
+        <form class="search" action="#" method="get">
+            <label id="search" for="search">Search:</label> <br>
+            <input id="search" type="text" name="search"> <br>
+            <button class="button" id="searchButton" type="submit">Search</button>
+        </form>
+    </div>
+
+    {% for user, data in results_users.items() %}
+        <h3><span class="user_details">User Name:</span> {{ data.name }}, <span
+                class="user_details">Email:</span> {{ data.email }}</h3>
+    {% endfor %}
+
+    {% if session.login %}
+            <form class="logout" action="/log_out" method="post">
+                 <button class="button" id="logOutButton" type="submit">Log out</button>
+            </form>
+    {% else %}
+        <div class="form-style">
+            <form class="registration" action="" method="post">
+                <h3 id="reg">website registration:</h3>
+                <label for="userName">User name:</label> <br>
+                <input type="text" id="userName" name="userName" required><br>
+                <label for="email">Email:</label> <br>
+                <input type="email" id="email" name="email" required><br>
+                <button class="button" id="registrationButton" type="submit">Registration</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
