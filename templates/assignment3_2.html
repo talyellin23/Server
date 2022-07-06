@@ -20,9 +20,9 @@
     {% endfor %}
 
     {% if session.login %}
-            <form class="logout" action="/log_out" method="post">
-                 <button class="button" id="logOutButton" type="submit">Log out</button>
-            </form>
+        <form class="logout" action="/log_out" method="post">
+            <button class="button" id="logOutButton" type="submit">Log out</button>
+        </form>
     {% else %}
         <div class="form-style">
             <form class="registration" action="" method="post">
@@ -31,8 +31,12 @@
                 <input type="text" id="userName" name="userName" required><br>
                 <label for="email">Email:</label> <br>
                 <input type="email" id="email" name="email" required><br>
+                <label for="password">Password:</label> <br>
+                <input type="password" id="password" name="password" required><br>
                 <button class="button" id="registrationButton" type="submit">Registration</button>
             </form>
         </div>
     {% endif %}
+
+    {{ message }}
 {% endblock %}

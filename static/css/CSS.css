@@ -135,6 +135,10 @@ p {
     color: rgb(54, 9, 255);
 }
 
+.center {
+    color: rgb(54, 9, 255);
+}
+
 
 .containerContact {
     display: grid;
@@ -281,6 +285,7 @@ p {
 .form-style{
     width: 400px;
     margin: 0 auto;
+    z-index: 3;
 }
 
 .registration{

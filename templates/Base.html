@@ -7,18 +7,23 @@
     {% include('styles.html') %}
     {% include('js.html') %}
 
-{% include('Nav.html') %}
-{% if session.login %}
-    <h2>Hello {{ session.username }}</h2>
-{% else %}
-    <h2>Hello guest</h2>
-{% endif %}
+    {% include('Nav.html') %}
+    {% if session.login %}
+        <h2>Hello {{ session.username }}</h2>
+    {% else %}
+        <h2>Hello guest</h2>
+    {% endif %}
 
-{% block contect %}
-    {{ content }}
+    {% block contect %}
+        {{ content }}
+    {% endblock %}
+    {% block IMG %}
+        <h1>Welcome back!</h1>
+        <img alt="vlad" src="/static/img/vladen.jpg" class="logo bigger" id="Super">
+    {% endblock %}
+
+
+{% block page_body_js %}
 {% endblock %}
-{% block IMG %}
-    <h1>Welcome back!</h1>
-    <img alt="vlad" src="/static/img/vladen.jpg" class="logo bigger" id="Super">
-{% endblock %}
+
 </html>

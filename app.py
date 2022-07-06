@@ -4,8 +4,12 @@ from flask import render_template
 from datetime import timedelta
 from flask import request, session
 from data import users
+from pages.assignment4.assignment_4 import assignment_4
+import mysql.connector
+
 
 app = Flask(__name__)
+app.register_blueprint(assignment_4)
 app.secret_key = '123'
 app.config['SESSION_PERMANENT'] = True
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=20)
@@ -41,6 +45,7 @@ def assignment3_1():  # put application's code here
 @app.route('/assignment3_2', methods=['GET', 'POST'])
 def assignment3_2():
     results_users = {}
+    message = ''
     registration_data = {}
 
     if 'search' in request.args:
@@ -57,8 +62,19 @@ def assignment3_2():
     if request.method == 'POST' and len(request.form) > 0:
         user_name = request.form['userName']
         user_email = request.form['email']
-        session['username'] = user_name
-        session['login'] = True
+        user_password = request.form['password']
+
+        user_registered = False
+        for user, data in users.items():
+            if user_email == data["email"]:
+                message = "This email is already used!"
+                user_registered = True
+                break
+
+        if not user_registered:
+            session['username'] = user_name
+            session['login'] = True
+            message = 'User created'
 
         num_of_users = len(users) + 1
         new_user_key = 'user{user_number}'.format(user_number=num_of_users)
@@ -66,7 +82,8 @@ def assignment3_2():
         users.update({
             new_user_key: {
                 'name': user_name,
-                'email': user_email
+                'email': user_email,
+                'password': user_password
             }
         })
 
@@ -74,7 +91,8 @@ def assignment3_2():
 
     return render_template('assignment3_2.html',
                            results_users=results_users,
-                           registration_data=registration_data)
+                           registration_data=registration_data,
+                           message=message)
 
 
 @app.route('/log_out', methods=['GET', 'POST'])
@@ -87,3 +105,5 @@ def logout_func():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
